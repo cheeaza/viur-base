@@ -27,12 +27,12 @@
                 </option>
             {% endif %}
             <option value="{{ entry["key"] }}"
-                    {% if boneParams.multiple %}
+                    {%- if boneParams.multiple -%}
                         {{ "selected" if entry["key"] in boneValue|map(attribute='dest.key') }}
-                    {% else %}
+                    {%- else -%}
                         {{ "selected" if boneValue and boneValue['dest'] and entry["key"] == boneValue["dest"]["key"] }}
-                    {% endif %}>
-                {{ entry["name"] }}
+                    {%- endif -%}>
+                {{ entry.get("name", entry["key"]) }}
             </option>
         {% endfor %}
     {% endfor %}
